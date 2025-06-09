@@ -1,0 +1,1157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --font-primary: 'Poppins', sans-serif;
+
+    /* Light Theme (Default) */
+    --bg-color-light: #f8fafc;
+    --surface-color-light: rgba(255, 255, 255, 0.95);
+    --text-color-primary-light: #2c3e50;
+    --text-color-secondary-light: #7f8c8d;
+    --accent-color-light: #3498db;
+    --accent-color-secondary-light: #2ecc71;
+    --accent-color-warning-light: #f1c40f;
+    --text-color-warning-light: #7b6002;
+    --error-color-light: #e74c3c;
+    --border-color-light: #e0e0e0;
+    --shadow-color-light: rgba(0, 0, 0, 0.1);
+
+    /* Dark Theme */
+    --bg-color-dark: #0f172a;
+    --surface-color-dark: rgba(30, 41, 59, 0.95);
+    --text-color-primary-dark: #e2e8f0;
+    --text-color-secondary-dark: #94a3b8;
+    --accent-color-dark: #60a5fa;
+    --accent-color-secondary-dark: #34d399;
+    --accent-color-warning-dark: #fbbf24;
+    --text-color-warning-dark: #fef3c7;
+    --error-color-dark: #f87171;
+    --border-color-dark: #334155;
+    --shadow-color-dark: rgba(0, 0, 0, 0.3);
+
+    /* Transitions & Animations */
+    --transition-speed-fast: 0.2s;
+    --transition-speed-normal: 0.4s;
+    --transition-speed-slow: 0.8s;
+
+    --accent-color-light-rgb: 52, 152, 219;
+    --accent-color-dark-rgb: 96, 165, 250;
+    --accent-color-secondary-rgb: 46, 204, 113; /* Added for consistency */
+    --error-color-rgb: 231, 76, 60; /* Added for consistency */
+    --text-color-secondary-rgb: 127, 140, 141; /* For light theme */
+
+
+}
+
+/* Apply theme variables */
+body.light-theme {
+    --bg-color: var(--bg-color-light);
+    --surface-color: var(--surface-color-light);
+    --text-color-primary: var(--text-color-primary-light);
+    --text-color-secondary: var(--text-color-secondary-light);
+    --accent-color: var(--accent-color-light);
+    --accent-color-secondary: var(--accent-color-secondary-light);
+    --accent-color-warning: var(--accent-color-warning-light);
+    --text-color-warning: var(--text-color-warning-light);
+    --error-color: var(--error-color-light);
+    --border-color: var(--border-color-light);
+    --shadow-color: var(--shadow-color-light);
+}
+
+body.dark-theme {
+    --bg-color: var(--bg-color-dark);
+    --surface-color: var(--surface-color-dark);
+    --text-color-primary: var(--text-color-primary-dark);
+    --text-color-secondary: var(--text-color-secondary-dark);
+    --accent-color: var(--accent-color-dark);
+    --accent-color-secondary: var(--accent-color-secondary-dark);
+    --accent-color-warning: var(--accent-color-warning-dark);
+    --text-color-warning: var(--text-color-warning-dark);
+    --error-color: var(--error-color-dark);
+    --border-color: var(--border-color-dark);
+    --shadow-color: var(--shadow-color-dark);
+
+    --text-color-secondary-rgb: 148, 163, 184; /* For dark theme */
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color-primary);
+    line-height: 1.7;
+    transition: all var(--transition-speed-normal) ease;
+    overflow-x: hidden;
+    /* Keep default cursor visible */
+    cursor: default;
+}
+
+/* ===========================================
+   ENHANCED DYNAMIC BACKGROUND EFFECTS
+   =========================================== */
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Multi-layered gradient background */
+.animated-gradient-bg {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        #667eea 0%,
+        #764ba2 15%,
+        #f093fb 30%,
+        #f5576c 45%,
+        #4facfe 60%,
+        #00f2fe 75%,
+        #667eea 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientFlow 25s ease infinite;
+    opacity: 0.12;
+    transition: opacity var(--transition-speed-normal) ease;
+}
+
+body.dark-theme .animated-gradient-bg {
+    opacity: 0.08;
+    background: linear-gradient(
+        45deg,
+        #1e3a8a 0%,
+        #7c3aed 15%,
+        #ec4899 30%,
+        #ef4444 45%,
+        #06b6d4 60%,
+        #8b5cf6 75%,
+        #1e3a8a 100%
+    );
+}
+
+/* Enhanced gradient animation with multiple movement patterns */
+@keyframes gradientFlow {
+    0% { 
+        transform: rotate(0deg) scale(1);
+        background-position: 0% 50%;
+    }
+    25% { 
+        transform: rotate(90deg) scale(1.1);
+        background-position: 100% 50%;
+    }
+    50% { 
+        transform: rotate(180deg) scale(1);
+        background-position: 100% 100%;
+    }
+    75% { 
+        transform: rotate(270deg) scale(1.1);
+        background-position: 0% 100%;
+    }
+    100% { 
+        transform: rotate(360deg) scale(1);
+        background-position: 0% 50%;
+    }
+}
+
+/* Additional animated background layer */
+.animated-gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 25%,
+        rgba(255, 255, 255, 0.05) 50%,
+        transparent 75%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    background-size: 200% 200%;
+    animation: shimmerEffect 15s ease infinite;
+}
+
+@keyframes shimmerEffect {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Enhanced floating orbs with more complex animations */
+.floating-orbs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
+    filter: blur(60px);
+    animation: complexFloat 30s infinite ease-in-out;
+    will-change: transform;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    top: 5%;
+    left: 5%;
+    animation-delay: 0s;
+    animation-duration: 35s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    right: 15%;
+    animation-delay: -12s;
+    animation-duration: 28s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    bottom: 15%;
+    left: 55%;
+    animation-delay: -24s;
+    animation-duration: 32s;
+}
+
+.orb-4 {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    right: 40%;
+    animation-delay: -8s;
+    animation-duration: 25s;
+}
+
+@keyframes complexFloat {
+    0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 0.3;
+    }
+    25% { 
+        transform: translate(50px, -60px) rotate(90deg) scale(1.2);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translate(-30px, 40px) rotate(180deg) scale(0.9);
+        opacity: 0.4;
+    }
+    75% { 
+        transform: translate(-60px, -20px) rotate(270deg) scale(1.1);
+        opacity: 0.6;
+    }
+}
+
+body.dark-theme .orb {
+    background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(124, 58, 237, 0.3));
+}
+
+/* ===========================================
+   ENHANCED CURSOR EFFECTS (NON-INTRUSIVE)
+   =========================================== */
+
+/* Ripple effect container */
+.cursor-ripples {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+}
+
+.ripple {
+    position: absolute;
+    border: 2px solid rgba(102, 126, 234, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: rippleExpand 0.8s ease-out forwards;
+    transform: translate(-50%, -50%);
+}
+
+body.dark-theme .ripple {
+    border-color: rgba(96, 165, 250, 0.6);
+}
+
+@keyframes rippleExpand {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+    }
+}
+
+/* Enhanced cursor trail with multiple layers */
+.cursor-trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.8), rgba(102, 126, 234, 0.4) 50%, transparent 80%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease-out;
+    box-shadow: 
+        0 0 10px rgba(102, 126, 234, 0.4),
+        0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.15), transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-out;
+}
+
+/* Magnetic field effect */
+.cursor-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, transparent 30%, rgba(102, 126, 234, 0.05) 50%, transparent 80%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9996;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease-out;
+    opacity: 0;
+}
+
+body.dark-theme .cursor-trail {
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.8), rgba(96, 165, 250, 0.4) 50%, transparent 80%);
+    box-shadow: 
+        0 0 10px rgba(96, 165, 250, 0.4),
+        0 0 20px rgba(96, 165, 250, 0.2);
+}
+
+body.dark-theme .cursor-glow {
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.15), transparent 70%);
+}
+
+body.dark-theme .cursor-field {
+    background: radial-gradient(circle, transparent 30%, rgba(96, 165, 250, 0.05) 50%, transparent 80%);
+}
+
+/* Enhanced hover states */
+.cursor-trail.hover {
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(46, 204, 113, 0.9), rgba(46, 204, 113, 0.5) 50%, transparent 80%);
+    box-shadow: 
+        0 0 15px rgba(46, 204, 113, 0.6),
+        0 0 25px rgba(46, 204, 113, 0.3);
+}
+
+.cursor-glow.hover {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(46, 204, 113, 0.2), transparent 70%);
+}
+
+.cursor-field.hover {
+    opacity: 1;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, transparent 20%, rgba(46, 204, 113, 0.08) 40%, transparent 80%);
+}
+
+/* Click effect */
+.cursor-trail.click {
+    animation: cursorPulse 0.3s ease-out;
+}
+
+@keyframes cursorPulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.5); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ===========================================
+   EXISTING STYLES WITH ENHANCEMENTS
+   =========================================== */
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: var(--surface-color);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: slideDownFadeIn 0.8s ease-out;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-title i {
+    font-size: 2em;
+    color: var(--accent-color);
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.app-header h1 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(135deg, var(--text-color-primary), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.carousel-text {
+    font-size: 0.95em;
+    color: var(--text-color-secondary);
+    min-width: 200px;
+    text-align: right;
+    opacity: 0;
+    animation: fadeIn 0.6s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.theme-toggle-button {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-secondary));
+    border: none;
+    color: white;
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed-fast) ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.theme-toggle-button:hover {
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--surface-color);
+    backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: all var(--transition-speed-normal) ease;
+    animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px var(--shadow-color);
+}
+
+/* Page Section Styling */
+.page-section {
+    display: none;
+    animation: fadeInFromRight 0.6s ease-out forwards;
+}
+
+.page-section.active-section {
+    display: block;
+}
+
+@keyframes fadeInFromRight {
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInFromLeft {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideDownFadeIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+h2 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    color: var(--text-color-primary);
+    margin-bottom: 30px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+.selection-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+@media (min-width: 600px) {
+    .selection-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.animated-button {
+    padding: 18px 30px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: white;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-secondary));
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all var(--transition-speed-fast) ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.animated-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.animated-button:hover::before {
+    left: 100%;
+}
+
+.animated-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.animated-button:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.back-button {
+    background: var(--surface-color);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    margin-bottom: 30px;
+    padding: 12px 24px;
+}
+
+.back-button:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.input-method-section {
+    margin-bottom: 30px;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+}
+
+.input-method-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-method-section h2::after {
+    margin: 12px 0 0;
+}
+
+.input-method-section p {
+    font-size: 1em;
+    color: var(--text-color-secondary);
+    margin-bottom: 20px;
+}
+
+textarea, input[type="file"], input[type="text"] {
+    width: 100%;
+    padding: 15px 18px;
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-color);
+    color: var(--text-color-primary);
+    font-family: var(--font-primary);
+    font-size: 1em;
+    transition: all var(--transition-speed-fast) ease;
+}
+
+textarea:focus, input[type="file"]:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+    transform: translateY(-2px);
+}
+
+.predict-button {
+    width: 100%;
+    background: linear-gradient(135deg, var(--accent-color-secondary), var(--accent-color));
+    font-size: 1.2em;
+    padding: 20px;
+}
+
+.results-container {
+    margin-top: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.results-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#predictionList {
+    list-style-type: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-top: 20px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+}
+
+#predictionList li {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--transition-speed-fast) ease;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#predictionList li:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateX(5px);
+}
+
+#predictionList li:last-child {
+    border-bottom: none;
+}
+
+.error-message {
+    background: rgba(231, 76, 60, 0.1);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+    border-left: 5px solid var(--error-color);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25px;
+}
+
+.api-url-section {
+    margin-top: 40px;
+    padding: 25px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.app-footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-color-secondary);
+    font-size: 0.95em;
+    background: var(--surface-color);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border-color);
+    animation: fadeIn 1s 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-secondary));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--accent-color-secondary), var(--accent-color));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-content {
+        padding: 20px 15px;
+    }
+    
+    .container {
+        padding: 25px;
+    }
+    
+    .carousel-text {
+        display: none;
+    }
+    
+    /* Reduce cursor effects on mobile */
+    .cursor-trail, .cursor-glow, .cursor-field {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .selection-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .animated-button {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+}
+
+/* Performance optimization */
+.background-container * {
+    will-change: transform, opacity;
+}
+
+.cursor-trail, .cursor-glow, .cursor-field {
+    will-change: transform;
+}
+
+.monitoring-layout {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 25px;
+    margin-top: 20px;
+}
+.latest-prediction-panel {
+    flex: 1;
+    min-width: 280px; /* Minimum width before wrapping */
+    padding: 20px;
+    background: var(--surface-color); /* Use surface color for consistency */
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+.all-predictions-panel {
+    flex: 2;
+    min-width: 300px; /* Minimum width */
+    max-height: 450px; 
+    overflow-y: auto;
+    padding: 20px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+#allMonitoringPredictionsList {
+    list-style-type: none;
+    padding: 0;
+}
+#allMonitoringPredictionsList li {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.95em;
+    transition: background-color var(--transition-speed-fast);
+}
+#allMonitoringPredictionsList li:last-child {
+    border-bottom: none;
+}
+#allMonitoringPredictionsList li:hover {
+    background-color: rgba(0,0,0,0.03); /* Subtle hover for dark/light themes */
+}
+body.dark-theme #allMonitoringPredictionsList li:hover {
+    background-color: rgba(255,255,255,0.05);
+}
+
+.status-message.large-text {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 8px;
+    word-break: break-all;
+}
+.status-message.small-text {
+    font-size: 0.85em;
+    color: var(--text-color-secondary);
+    word-break: break-all;
+    max-height: 60px; /* Limit height of input display */
+    overflow-y: auto;
+}
+.input-method-section h3 { 
+    font-size: 1.3em;
+    margin-bottom: 20px; /* Increased slightly for better spacing */
+    color: var(--text-color-primary);
+    text-align: center; /* Ensure H3 titles are centered */
+}
+
+/* ===========================================
+   SYSTEM MONITORING PAGE STYLES
+   =========================================== */
+
+/* Center the 'Back to Selection' button */
+#pageSystemMonitoring > .back-button {
+    display: block; 
+    width: fit-content; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px; /* Increased bottom margin for more separation */
+}
+
+/* Main title H2 of the monitoring page is already centered by global h2 styles */
+/* #pageSystemMonitoring > h2 { ... } */
+
+/* Styling for individual sections within the monitoring page (e.g., File Upload, Controls) */
+#pageSystemMonitoring .input-method-section {
+    max-width: 600px; /* Slightly reduced max-width for a more compact look */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px; /* Consistent bottom margin for sections */
+    padding: 30px; /* Existing padding */
+    background: var(--surface-color); /* Use surface color for a cleaner look */
+    border: 1px solid var(--border-color);
+    border-radius: 15px; /* Existing border-radius */
+    box-shadow: 0 10px 25px var(--shadow-color); /* Enhanced shadow */
+}
+
+/* Headings within monitoring sections (H3) */
+#pageSystemMonitoring .input-method-section h3 { 
+    font-size: 1.4em; /* Slightly larger H3 */
+    font-weight: 600;
+    margin-bottom: 25px; 
+    color: var(--text-color-primary);
+    text-align: center; 
+}
+#pageSystemMonitoring .input-method-section h3::after { /* Optional: add underline to H3 */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Use flexbox to center items within the file upload and controls sections */
+#pageSystemMonitoring #monitoringFileUploadSection,
+#pageSystemMonitoring #monitoringControlsSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will center the direct children horizontally */
+    gap: 20px;
+}
+
+/* Styling for all direct children elements within the monitoring sections */
+#pageSystemMonitoring #monitoringFileUploadSection > *,
+#pageSystemMonitoring #monitoringControlsSection > * {
+    width: 100%; 
+    max-width: 450px; /* Consistent maximum width for child elements */
+    box-sizing: border-box;
+}
+
+/* Common styling for interactive elements: file input, text input, buttons */
+#pageSystemMonitoring input[type="file"],
+#pageSystemMonitoring input[type="text"],
+#pageSystemMonitoring #monitoringControlsSection .animated-button, /* Be more specific for buttons here */
+#pageSystemMonitoring #monitoringFileUploadSection .animated-button {
+    padding: 15px 20px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color-primary);
+    transition: all var(--transition-speed-fast) ease;
+    display: block; /* Base display for width and margin calculations */
+}
+
+#pageSystemMonitoring input[type="file"]:focus,
+#pageSystemMonitoring input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(var(--accent-color-light), 0.2); /* Use RGB for alpha */
+}
+body.dark-theme #pageSystemMonitoring input[type="file"]:focus,
+body.dark-theme #pageSystemMonitoring input[type="text"]:focus {
+    box-shadow: 0 0 0 3px rgba(var(--accent-color-dark), 0.2); /* Use RGB for alpha */
+}
+
+
+/* Specific styling for buttons in monitoring page's control section */
+#pageSystemMonitoring #monitoringControlsSection .animated-button {
+    /* display: block; is set above, now override for internal flex content */
+    display: flex;       /* For icon and text alignment within the button */
+    align-items: center; /* Vertically center icon/text */
+    justify-content: center; /* Horizontally center icon/text */
+    color: white;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-secondary));
+    border-color: transparent; /* Buttons with strong background might not need a visible border */
+    font-weight: 500;
+    /* text-align: center; /* Not needed for flex centering of content */
+}
+
+#pageSystemMonitoring #monitoringControlsSection .animated-button i {
+    margin-right: 8px;
+}
+
+/* Ensure the "Start Monitoring" button gets its specific gradient if it's also a .predict-button */
+#pageSystemMonitoring #monitoringControlsSection .predict-button { 
+    background: linear-gradient(135deg, var(--accent-color-secondary), var(--accent-color));
+}
+
+#pageSystemMonitoring #monitoringControlsSection #stopMonitoringButton {
+    background: var(--error-color);
+}
+#pageSystemMonitoring #monitoringControlsSection #stopMonitoringButton:hover {
+    background: color-mix(in srgb, var(--error-color) 80%, black);
+}
+
+
+/* Text alignment for file input (browser default is usually left) */
+#pageSystemMonitoring input[type="file"] {
+    text-align: left; 
+    /* Custom styling for file input button might be needed for full consistency */
+}
+
+/* Custom styling for the file input button text */
+#pageSystemMonitoring input[type="file"]::file-selector-button {
+    padding: 10px 15px;
+    margin-right: 15px;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color var(--transition-speed-fast);
+}
+#pageSystemMonitoring input[type="file"]::file-selector-button:hover {
+    background: color-mix(in srgb, var(--accent-color) 85%, black);
+}
+
+
+/* Status message paragraphs (e.g., #monitoringStatus) within monitoring controls */
+#pageSystemMonitoring #monitoringControlsSection p.status-message {
+    /* max-width: 450px is inherited from the > * rule */
+    /* display: block is default for p */
+    text-align: center; /* CRITICAL: Explicitly center text within this paragraph */
+    padding: 12px 18px; 
+    color: var(--text-color-secondary);
+    background-color: rgba(var(--text-color-secondary-rgb, 127, 140, 141), 0.05);
+    border-radius: 8px;
+    margin: 0; /* Spacing handled by parent's gap */
+    font-size: 0.95em;
+    border: 1px solid transparent;
+}
+
+/* Specific status message styling */
+#pageSystemMonitoring #monitoringFileStatus[style*="var(--accent-color-secondary)"] { /* Success */
+    background-color: rgba(var(--accent-color-secondary-rgb, 46, 204, 113), 0.1);
+    border-color: var(--accent-color-secondary);
+}
+#pageSystemMonitoring #monitoringFileStatus[style*="var(--error-color)"] { /* Error */
+    background-color: rgba(var(--error-color-rgb, 231, 76, 60), 0.1);
+    border-color: var(--error-color);
+}
+
+/* Paragraph containing the "API giám sát:" label and its input field */
+#pageSystemMonitoring #monitoringControlsSection > p:has(input#monitoringApiUrl) {
+    /* max-width: 450px is inherited from the > * rule */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will center the "API giám sát:" text and the input block below it */
+    gap: 8px;          /* Space between the label and the input */
+    padding: 0; 
+    margin: 0; /* Spacing handled by parent's gap */
+    /* text-align: center; /* Not strictly needed if using flex align-items, but doesn't hurt for the text node */
+}
+
+/* The API URL input field itself */
+#pageSystemMonitoring #monitoringApiUrl {
+    /* display: block; is inherited from common input styles */
+    width: 100%; /* Takes full width of its container (the p, which is max 450px) */
+    text-align: left; /* Text *inside* the input field should be left-aligned */
+    /* Common input styles (padding, font-size, border, etc.) are already applied by the grouped selector */
+    /* margin-top is handled by gap on parent p */
+}
+
+/* Monitoring Results Section */
+#pageSystemMonitoring .results-container {
+    max-width: 800px; /* Wider for results layout */
+    margin-top: 30px;
+    /* padding, background, border, shadow are inherited from .input-method-section if it also has .results-container */
+    /* If not, apply similar styles: */
+    padding: 25px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+#pageSystemMonitoring .results-container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+#pageSystemMonitoring .results-container h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-secondary));
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.monitoring-layout { /* This class is already defined, ensure it fits well */
+    gap: 20px; /* Adjust gap if needed */
+}
+.latest-prediction-panel, .all-predictions-panel {
+    padding: 20px;
+    background: var(--bg-color); /* Slightly different background for panels */
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+.latest-prediction-panel h4, .all-predictions-panel h4 {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: var(--text-color-primary);
+    text-align: left;
+}
+#allMonitoringPredictionsList {
+    max-height: 300px; /* Adjust height */
+}
+
+/* Error message display for monitoring */
+#pageSystemMonitoring #monitoringErrorDisplay {
+    max-width: 600px; /* Consistent with sections */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px; /* Spacing from content above */
+    /* .error-message global styles apply for colors and padding */
+}
+
+

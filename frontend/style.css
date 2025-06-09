@@ -1,0 +1,540 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --font-primary: 'Poppins', sans-serif;
+
+    /* Light Theme (Default) */
+    --bg-color-light: #f4f7f6; /* Off-white, very light gray */
+    --surface-color-light: #ffffff;
+    --text-color-primary-light: #2c3e50; /* Dark blue-gray */
+    --text-color-secondary-light: #7f8c8d; /* Medium gray */
+    --accent-color-light: #3498db; /* Bright blue */
+    --accent-color-secondary-light: #2ecc71; /* Green for success/predict */
+    --accent-color-warning-light: #f1c40f; /* Yellow for specific attacks */
+    --text-color-warning-light: #7b6002; /* Darker yellow text for light theme warning */
+    --error-color-light: #e74c3c; /* Red for errors */
+    --border-color-light: #e0e0e0;
+    --shadow-color-light: rgba(0, 0, 0, 0.08);
+    --gradient-start-light: #e0f2f1; /* Light teal */
+    --gradient-mid-light: #f0f3f7;   /* Light blueish gray */
+    --gradient-end-light: #e8eaf6;   /* Light indigo */
+
+    /* Dark Theme */
+    --bg-color-dark: #1a1d24; /* Very dark blue-gray */
+    --surface-color-dark: #252a33; /* Darker surface */
+    --text-color-primary-dark: #e0e0e0; /* Light gray for text */
+    --text-color-secondary-dark: #a0a0a0; /* Medium light gray */
+    --accent-color-dark: #5dade2; /* Lighter blue for dark mode */
+    --accent-color-secondary-dark: #27ae60; /* Slightly darker green */
+    --accent-color-warning-dark: #f39c12; /* Orange-yellow for specific attacks */
+    --text-color-warning-dark: #f0e68c; /* Light yellow text for dark theme warning */
+    --error-color-dark: #c0392b; /* Slightly darker red */
+    --border-color-dark: #3a3f4a;
+    --shadow-color-dark: rgba(0, 0, 0, 0.25);
+    --gradient-start-dark: #2c3e50; /* Dark slate blue */
+    --gradient-mid-dark: #34495e;   /* Wet asphalt */
+    --gradient-end-dark: #212f3c;   /* Darker blue */
+
+    /* Transitions & Animations */
+    --transition-speed-fast: 0.2s;
+    --transition-speed-normal: 0.4s;
+}
+
+/* Apply theme variables */
+body.light-theme {
+    --bg-color: var(--bg-color-light);
+    --surface-color: var(--surface-color-light);
+    --text-color-primary: var(--text-color-primary-light);
+    --text-color-secondary: var(--text-color-secondary-light);
+    --accent-color: var(--accent-color-light);
+    --accent-color-secondary: var(--accent-color-secondary-light);
+    --accent-color-warning: var(--accent-color-warning-light);
+    --text-color-warning: var(--text-color-warning-light);
+    --error-color: var(--error-color-light);
+    --border-color: var(--border-color-light);
+    --shadow-color: var(--shadow-color-light);
+    --gradient-start: var(--gradient-start-light);
+    --gradient-mid: var(--gradient-mid-light);
+    --gradient-end: var(--gradient-end-light);
+}
+
+body.dark-theme {
+    --bg-color: var(--bg-color-dark);
+    --surface-color: var(--surface-color-dark);
+    --text-color-primary: var(--text-color-primary-dark);
+    --text-color-secondary: var(--text-color-secondary-dark);
+    --accent-color: var(--accent-color-dark);
+    --accent-color-secondary: var(--accent-color-secondary-dark);
+    --accent-color-warning: var(--accent-color-warning-dark);
+    --text-color-warning: var(--text-color-warning-dark);
+    --error-color: var(--error-color-dark);
+    --border-color: var(--border-color-dark);
+    --shadow-color: var(--shadow-color-dark);
+    --gradient-start: var(--gradient-start-dark);
+    --gradient-mid: var(--gradient-mid-dark);
+    --gradient-end: var(--gradient-end-dark);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-color);
+    color: var(--text-color-primary);
+    line-height: 1.7;
+    transition: background-color var(--transition-speed-normal) ease, color var(--transition-speed-normal) ease;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(-45deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end), var(--gradient-mid));
+    background-size: 400% 400%;
+    animation: gradientBG 25s ease infinite;
+    transition: background var(--transition-speed-normal) ease; /* For theme change */
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: transparent; /* Header blends with background or has its own subtle style */
+    color: var(--text-color-primary);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(5px); /* Subtle glassmorphism if background is complex */
+    background-color: color-mix(in srgb, var(--surface-color) 80%, transparent);
+    animation: slideDownFadeIn 0.7s ease-out;
+}
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo-title i {
+    font-size: 1.8em;
+    color: var(--accent-color);
+}
+.app-header h1 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0;
+}
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.carousel-text {
+    font-size: 0.9em;
+    color: var(--text-color-secondary);
+    min-width: 200px; /* Give it some space */
+    text-align: right;
+    opacity: 0; /* Initially hidden for fade-in */
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: 0.2s; /* Delay for carousel text */
+}
+.theme-toggle-button {
+    background: none;
+    border: none;
+    color: var(--text-color-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease;
+}
+.theme-toggle-button:hover {
+    color: var(--accent-color);
+    transform: rotate(15deg) scale(1.1);
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically center content if page is short */
+    padding: 30px 15px; /* Padding for smaller screens */
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--surface-color);
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    transition: background-color var(--transition-speed-normal) ease, box-shadow var(--transition-speed-normal) ease;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0; /* Start hidden for popIn animation */
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes slideDownFadeIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUpFadeIn {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Page Section Styling */
+.page-section {
+    display: none; /* Hidden by default, JS will show active */
+    animation: fadeInFromRight 0.5s ease-out forwards;
+}
+.page-section.active-section {
+    display: block;
+}
+@keyframes fadeInFromRight {
+    0% { opacity: 0; transform: translateX(30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInFromLeft { /* For back navigation */
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+.page-section.exit-to-left { animation: fadeOutToLeft 0.4s ease-in forwards; }
+.page-section.exit-to-right { animation: fadeOutToRight 0.4s ease-in forwards; }
+
+@keyframes fadeOutToLeft {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(-30px); }
+}
+@keyframes fadeOutToRight {
+    0% { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(30px); }
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 500;
+    color: var(--text-color-primary);
+    margin-bottom: 30px;
+    position: relative;
+}
+h2::after { /* Subtle underline effect */
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 8px auto 0;
+    border-radius: 2px;
+}
+
+.selection-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+@media (min-width: 600px) {
+    .selection-options {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.animated-button {
+    padding: 15px 25px;
+    font-size: 1.05em;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed-fast) ease, transform var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--accent-color) 40%, transparent);
+}
+.animated-button:hover {
+    background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 7px 20px color-mix(in srgb, var(--accent-color) 50%, transparent);
+}
+.animated-button:active {
+    transform: translateY(-1px) scale(0.99);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--accent-color) 30%, transparent);
+}
+
+.back-button {
+    background-color: var(--surface-color);
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    margin-bottom: 30px;
+    padding: 10px 20px; /* Slightly smaller */
+}
+.back-button:hover {
+    background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+    color: var(--accent-color); /* Keep text color consistent on hover */
+}
+
+.input-method-section {
+    margin-bottom: 25px;
+    padding: 25px;
+    background-color: color-mix(in srgb, var(--bg-color) 50%, var(--surface-color));
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+.input-method-section h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    text-align: left;
+}
+.input-method-section h2::after {
+    margin: 8px 0 0; /* Align left */
+}
+.input-method-section p {
+    font-size: 0.95em;
+    color: var(--text-color-secondary);
+    margin-bottom: 15px;
+}
+
+textarea, input[type="file"], input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-color);
+    color: var(--text-color-primary);
+    font-family: var(--font-primary);
+    font-size: 1em;
+    transition: border-color var(--transition-speed-fast) ease, box-shadow var(--transition-speed-fast) ease;
+}
+textarea:focus, input[type="file"]:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+input[type="file"] {
+    padding: 10px; /* Adjust for file input */
+    cursor: pointer;
+}
+input[type="file"]::file-selector-button {
+    padding: 8px 15px;
+    border-radius: 6px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color var(--transition-speed-fast) ease;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+}
+
+
+.common-prediction-elements {
+    margin-top: 20px;
+}
+.feature-count-info {
+    font-size: 0.9em;
+    color: var(--text-color-secondary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+.predict-button {
+    width: 100%;
+    background-color: var(--accent-color-secondary);
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--accent-color-secondary) 40%, transparent);
+}
+.predict-button:hover {
+    background-color: color-mix(in srgb, var(--accent-color-secondary) 85%, black);
+    box-shadow: 0 7px 20px color-mix(in srgb, var(--accent-color-secondary) 50%, transparent);
+}
+
+.results-container {
+    margin-top: 30px;
+    opacity: 0; /* For scroll animation */
+    transform: translateY(20px); /* For scroll animation */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.results-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.results-container h2 {
+    font-size: 1.4em;
+    text-align: left;
+}
+.results-container h2::after {
+    margin-left: 0;
+}
+
+#predictionList {
+    list-style-type: none;
+    padding: 0;
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-top: 15px;
+    background-color: color-mix(in srgb, var(--bg-color) 50%, var(--surface-color));
+}
+#predictionList li {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-speed-fast) ease, filter var(--transition-speed-fast) ease;
+    font-size: 0.95em;
+}
+#predictionList li.clickable-result:hover {
+    filter: brightness(95%); /* Slight visual feedback on hover */
+    /* For dark theme, brightness(105%) or a specific background might be better */
+}
+body.dark-theme #predictionList li.clickable-result:hover {
+    filter: brightness(115%);
+}
+#predictionList li:last-child {
+    border-bottom: none;
+}
+/* Specific result item styling will be applied by JS */
+
+.status-message {
+    text-align: center;
+    font-style: italic;
+    color: var(--text-color-secondary);
+    margin-top: 15px;
+}
+
+.error-message {
+    background-color: color-mix(in srgb, var(--error-color) 15%, transparent);
+    color: var(--error-color);
+    border: 1px solid color-mix(in srgb, var(--error-color) 40%, transparent);
+    border-left: 5px solid var(--error-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.error-message p { margin: 0; }
+
+.api-url-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: color-mix(in srgb, var(--bg-color) 30%, var(--surface-color));
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.api-url-section label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-color-primary);
+}
+.api-url-section p {
+    font-size: 0.85em;
+    color: var(--text-color-secondary);
+    margin-top: 8px;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 25px 15px;
+    color: var(--text-color-secondary);
+    font-size: 0.9em;
+    background-color: transparent;
+    animation: slideUpFadeIn 0.7s 0.5s ease-out forwards; /* Delay footer animation */
+    opacity: 0;
+}
+
+/* Scrollbar styling (optional, for a more polished look) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--text-color-secondary);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .app-header h1 {
+        font-size: 1.3em;
+    }
+    .header-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .carousel-text {
+        min-width: 150px;
+        text-align: left;
+    }
+    .main-content {
+        padding: 20px 10px;
+    }
+    .container {
+        padding: 20px;
+    }
+    h2 { font-size: 1.6em; }
+    .input-method-section h2, .results-container h2 { font-size: 1.3em; }
+    .animated-button { padding: 12px 20px; font-size: 1em; }
+}
+
+@media (max-width: 480px) {
+    .selection-options {
+        grid-template-columns: 1fr; /* Ensure single column on very small screens */
+    }
+    .app-header h1 { font-size: 1.1em; }
+    .logo-title i { font-size: 1.5em; }
+    .theme-toggle-button { font-size: 1.3em; }
+    .carousel-text { display: none; } /* Hide carousel on very small screens if too cluttered */
+}
+
+/* Utility class for scroll animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,25 @@
+SLIDE & BÁO CÁO
+
+LINK SLIDE:
+https://www.canva.com/design/DAGk0PphBCI/dIN0mqj_2E5jSwzeTlwFHw/edit?utm_content=DAGk0PphBCI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+LINK BÁO CÁO:
+https://www.overleaf.com/project/67f3d43727fea8bfdca82550
+
+
+docker build -t prj2_20242 .
+
+docker run -p 8888:8888 prj2_20242
+
+
+ipconfig getifaddr en0
+
+192.168.100.66
+
+brew install ngrok
+
+ngrok config add-authtoken 2vrWUCId9UMUwZFBu8BX8lDAGNX_74SPtuuc97qPZWmK6gCbx
+
+ngrok http 8888
+
+https://random-id.ngrok.io

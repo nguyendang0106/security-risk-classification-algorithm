@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự đoán Rủi Ro Bảo Mật Hiện Đại</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-theme"> 
+
+    <div class="animated-background"></div>
+
+    <div class="app-wrapper">
+        <header class="app-header">
+            <div class="logo-title">
+                <i class="fas fa-shield-alt"></i>
+                <h1>DỰ ĐOÁN RỦI RO BẢO MẬT</h1>
+            </div>
+            <div class="header-controls">
+                <div id="carouselText" class="carousel-text">Đang tải thông tin...</div>
+                <button id="themeToggleButton" class="theme-toggle-button">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="container">
+                <!-- Page 1: Main Selection -->
+                <div id="pageMainSelection" class="page-section active-section">
+                    <h2>Chọn phương thức nhập dữ liệu:</h2>
+                    <div class="selection-options">
+                        <button id="btnShowDirectInputPage" class="selection-button animated-button">
+                            <span class="button-icon"></span> Nhập trực tiếp
+                        </button>
+                        <button id="btnShowFileUploadPage" class="selection-button animated-button">
+                            <span class="button-icon"></span> Tải lên tệp CSV
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Input Area & Common Sections (initially hidden) -->
+                <div id="inputAreaContainer" class="page-section">
+                    <button id="backToSelectionButton" class="back-button animated-button">
+                        <i class="fas fa-arrow-left"></i> Chọn lại
+                    </button>
+
+                    <!-- Direct Input Section (initially hidden) -->
+                    <div id="directInputSection" class="input-method-section">
+                        <h2>Nhập trực tiếp dữ liệu đặc trưng:</h2>
+                        <p>Nhập các giá trị đặc trưng, cách nhau bằng dấu phẩy (,). Mỗi dòng là một mẫu riêng biệt.</p>
+                        <textarea id="featureInput" rows="8" placeholder="Ví dụ:&#10;58700,49,1,1,6,...&#10;58701,50,2,2,7,..."></textarea>
+                    </div>
+
+                    <!-- File Upload Section (initially hidden) -->
+                    <div id="fileUploadSection" class="input-method-section">
+                        <h2>Tải lên tệp CSV:</h2>
+                        <p>Mỗi dòng một mẫu, các giá trị cách nhau bằng dấu phẩy. Tệp có thể chứa dòng tiêu đề (sẽ được bỏ qua).</p>
+                        <input type="file" id="fileInput" accept=".csv">
+                    </div>
+
+                    <!-- Common elements for prediction -->
+                    <div class="common-prediction-elements">
+                        <p class="feature-count-info">Số lượng đặc trưng mong đợi: <span id="expectedFeaturesCount">Đang tải...</span></p>
+                        <button id="predictButton" class="predict-button animated-button">
+                            <i class="fas fa-cogs"></i> Dự đoán
+                        </button>
+                    </div>
+
+                    <div id="resultSection" class="results-container">
+                        <h2>Kết quả Dự đoán:</h2>
+                        <ul id="predictionList"></ul>
+                        <p id="singlePredictionResult" class="status-message" style="display:none;">---</p>
+                    </div>
+
+                    <div id="errorSection" class="error-message" style="display:none;">
+                        <p id="errorMessage"></p>
+                    </div>
+
+                    <div class="api-url-section">
+                        <label for="apiUrl">API URL:</label>
+                        <input type="text" id="apiUrl" value="http://127.0.0.1:8888/predict" placeholder="http://127.0.0.1:8888/predict">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2025 Phân Tích Rủi Ro Bảo Mật. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script></body>
+</html>

@@ -1,0 +1,28 @@
+.kaggle/kaggle.json
+# Môi trường ảo
+venv/
+
+# Dữ liệu lớn
+*.csv
+*.parquet
+*.feather
+*.pkl
+*.npy
+*.npz
+*.pt
+*.h5
+*.json
+*.xlsx
+*.png
+*.pth
+*.p
+*.zip
+
+# Tạm thời
+__pycache__/
+*.log
+*.tmp
+.DS_Store
+
+# VSCode
+.vscode/
